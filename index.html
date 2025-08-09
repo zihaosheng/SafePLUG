@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="SafePLUG">
+    <meta name="keywords"
+          content="Autonomous Driving, Vision-Language Models, Traffi Scenario Generation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SafePLUG</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/logo.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<style>
+    #btt-bttn {
+        display: inline-block;
+        background-color: rgba(126, 125, 125, 0.5);
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border-radius: 4px;
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        transition: background-color .3s,
+        opacity .5s, visibility .5s;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+    }
+
+    #btt-bttn::after {
+        content: "\f077";
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        font-size: 2em;
+        line-height: 50px;
+        color: #fff;
+    }
+
+    #btt-bttn:hover {
+        cursor: pointer;
+        background-color: #333;
+    }
+
+    #btt-bttn:active {
+        background-color: #555;
+    }
+
+    #btt-bttn.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .responsive-img {
+        width: 72%;
+        height: auto;
+    }
+
+    /* 针对屏幕宽度小于768px（一般是手机）时设置宽度为100% */
+    @media (max-width: 768px) {
+        .responsive-img {
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+<a id="btt-bttn"></a>
+
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="https://zihaosheng.github.io/">
+          <span class="icon">
+              <i class="fas fa-home"></i>
+          </span>
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More Research
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://zihaosheng.github.io/CurricuVLM/">
+                        CurricuVLM
+                    </a>
+                    <a class="navbar-item" href="https://www.huang-zilin.com/VLM-RL-website/">
+                        VLM-RL
+                    </a>
+                    <a class="navbar-item" href="https://www.huang-zilin.com/HAIM-DRL-website/">
+                        HAIM-DRL
+                    </a>
+                    <a class="navbar-item" href="https://www.huang-zilin.com/PE-RLHF-website/">
+                        PE-RLHF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<!--Title-->
+<section class="hero" style="margin-top: -30px;">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title"><img src="./static/images/logo.png" class="interpolation-image" alt="Interpolate start reference image." width="6%"/> SafePLUG</h1>
+                    <h1 class="title is-3 publication-title">Empowering Multimodal LLMs with Pixel-Level Insight and Temporal Grounding for Traffic Accident Understanding</h1>
+                    <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://zihaosheng.github.io/">Zihao Sheng</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://github.com/zilin-huang">Zilin Huang</a><sup>1</sup>,
+              </span>
+                        <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=hIt7KnUAAAAJ&hl=en">Yen-Jung Chen</a><sup>2</sup>,
+                        </span>
+                        <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=hIt7KnUAAAAJ&hl=en">Yansong Qu</a><sup>2</sup>,
+                        </span>
+                        <br>
+                        <span class="author-block">
+                <a href="https://github.com/zilin-huang">Yuhao Luo</a><sup>1</sup>,</span>
+                        <span class="author-block">
+                <a href="https://www.linkedin.com/in/yue-leng-aa8aa363/">Yue Leng</a><sup>3</sup>,</span>
+                        <span class="author-block">
+                <a href="https://sky-lab-uw.github.io/">Sikai Chen</a><sup>1,<i
+                                class="fa-regular fa-envelope fa-shake"></i></sup>
+              </span>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>University of Wisconsin-Madison</span>,&nbsp;
+                            <span class="author-block"><sup>2</sup>Purdue University</span>,&nbsp;
+                            <span class="author-block"><sup>3</sup>Google</span>
+                            <span class="eql-cntrb"><small><br><sup><i
+                                    class="fa-regular fa-envelope fa-shake"></i></sup>Corresponding Author</small></span>
+                        </div>
+                    </div>
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                <span class="link-block">
+                  <a href="http://arxiv.org/" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                            <span class="link-block">
+                  <a href="https://github.com/zihaosheng/SafePLUG" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                            <!-- HuggingFace link -->
+                            <span class="link-block">
+                    <a href="https://huggingface.co/zihaosheng"
+                       class="external-link button is-normal is-rounded is-dark">
+                    <span>🤗 HuggingFace</span>
+                  </a>
+                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+            <img src="./static/images/fig1.svg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <h2 class="subtitle has-text-centered">
+                SafePLUG supports both image/video-level and pixel-level understanding through accident description, temporal localization,
+                region-level question answering, and pixel-level grounding, enabling comprehensive traffic accident analysis.
+            </h2>
+        </div>
+    </div>
+</section>
+
+
+<!-- Abstract Section -->
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container"
+             style="max-width: 1000px; margin: auto; padding: 20px; background-color: white; border-radius: 8px;">
+            <h2 class="title is-3" style="text-align: center;">Abstract</h2>
+            <div class="content" style="font-size: 16px; text-align: justify;">
+                <p style="font-size: 20px;">
+                Multimodal large language models (MLLMs) have achieved remarkable progress across a range of vision-language tasks and demonstrate strong
+                potential for traffic accident understanding. However, existing MLLMs in this domain primarily focus on coarse-grained image-level or
+                video-level comprehension and often struggle to handle fine-grained visual details or localized scene components, limiting their applicability
+                in complex accident scenarios. To address these limitations, we propose SafePLUG, a novel framework that empowers MLLMs with both Pixel-Level
+                Understanding and temporal Grounding for comprehensive traffic accident analysis. SafePLUG supports both arbitrary-shaped visual prompts
+                for region-aware question answering and pixel-level segmentation based on language instructions, while also enabling the recognition of
+                temporally anchored events in traffic accident scenarios. To advance the development of MLLMs for traffic accident understanding, we
+                curate a new dataset containing multimodal question-answer pairs centered on diverse accident scenarios, with detailed pixel-level
+                annotations and temporal event boundaries. Experimental results show that SafePLUG achieves strong performance on multiple tasks,
+                including region-based question answering, pixel-level segmentation, temporal event localization, and accident event understanding.
+                These capabilities lay a foundation for fine-grained understanding of complex traffic scenes, with the potential to improve driving
+                safety and enhance situational awareness in smart transportation systems.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="hero is-light is-big", style="margin-top: -35px">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-five-fifths">
+                <br>
+                <br>
+                <h2 class="title is-3">🔥 Highlights</h2>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+            <div class="column is-five-fifths">
+                <p style="font-size: 20px;">
+                    1. <b>SafePLUG Framework</b> - Developed a novel multimodal large language model framework that integrates <span style="color: rgb(176, 152, 31)">pixel-level understanding and temporal grounding</span> for fine-grained traffic accident analysis.
+                </p>
+                <br>
+                <p style="font-size: 20px;">
+                    2. <b>Comprehensive Accident Dataset </b> - Built a large-scale benchmark with <span style="color: rgb(176, 152, 31)">region QA, pixel-level grounding, accident description, and temporal localization</span> tasks, featuring detailed bounding boxes, segmentation masks, and event boundaries.
+                </p>
+                <br>
+                <p style="font-size: 20px;">
+                    3. <b>State-of-the-Art Performance</b> -  Outperforms strong baselines on four key tasks and generalizes well to different shapes and positions of visual prompts.
+                </p>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Animation. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3"><img src="./static/images/logo.png" class="interpolation-image" alt="Interpolate start reference image." width="5%"/>  SafePLUG Architecture</h2>
+            </div>
+        </div>
+        <div class="columns is-centered ">
+            <div class="column is-full-width">
+                <p style="font-size: 20px;">
+                    SafePLUG is a multimodal large language model framework for fine-grained traffic accident understanding. It takes <span style="color: rgb(176, 152, 31)">video frames with number prompts</span>, image-level context, and <span style="color: rgb(176, 152, 31)">user-defined visual prompts</span> (bounding boxes, polygons, or free-form masks). Images and video frames are encoded by CLIP‑L/14; frame indices are overlaid as lightweight number prompts to provide temporal cues, and a visual prompt encoder extracts region features from the specified boxes/masks. A unified multimodal fusion module within the LLM enables joint reasoning, and <span style="color: rgb(176, 152, 31)">dual decoders</span> produce either natural language answers or SAM‑based pixel segmentation masks. This design allows SafePLUG to accurately connect <span style="color: rgb(176, 152, 31)">what happens, where it happens, and when it happens</span> in complex accident scenarios.
+                </p>
+
+                <div class="column is-centered has-text-centered">
+                    <img src="./static/images/fig2.svg"
+                         class="interpolation-image"
+                         alt="Interpolate start reference image."/>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    </div>
+</section>
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <div style="position: relative;">
+            <button id="copyButton" style="position: absolute; top: 0; right: 0;">Copy</button>
+            <pre><code id="bibtexCode">@inproceedings{sheng2025safeplug,
+  title={SafePLUG: Empowering Multimodal LLMs with Pixel-Level Insight and Temporal Grounding for Traffic Accident Understanding},
+  author={Sheng, Zihao and Huang, Zilin and Chen, Yen-Jung and Qu, Yansong and Luo, Yuhao and Leng, Yue and Chen, Sikai},
+  year={2025}
+}</code></pre>
+        </div>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+<script>
+    var copyButton = document.getElementById("copyButton");
+
+    copyButton.addEventListener("click", function () {
+        var codeElement = document.getElementById("bibtexCode");
+        var textToCopy = codeElement.textContent;
+
+        var textarea = document.createElement("textarea");
+        textarea.value = textToCopy;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+
+        copyButton.textContent = "✓ Copied!";
+
+        setTimeout(function () {
+            copyButton.textContent = "Copy";
+        }, 2000); // Reset the button text after 2 seconds (adjust as needed)
+    });
+</script>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="content has-text-centered">
+            <a class="icon-link" href="http://arxiv.org/">
+                <i class="fas fa-file-pdf"></i>
+            </a>
+            <a class="icon-link" href="https://github.com/zihaosheng/SafePLUG" class="external-link"
+               disabled>
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p class="footer-paragraph">
+                        This page is adapted from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies
+                        project
+                        page</a> and is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+
+<script>
+    var btn = $('#btt-bttn');
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, '300');
+    });
+
+</script>
+
+</html>
