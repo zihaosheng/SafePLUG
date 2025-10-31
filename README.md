@@ -1,8 +1,9 @@
 <div id="top" align="center">
 <p align="center">
   <strong>
+    <img src="https://zihaosheng.github.io/SafePLUG/static/images/logo.png" width="80" style="margin-bottom: 0px;"/>
     <h2 align="center">SafePLUG: Empowering Multimodal LLMs with Pixel-Level Insight and Temporal Grounding for Traffic Accident Understanding</h2>
-    <h3 align="center"><a href="https://zihaosheng.github.io/SafePLUG/">Website</a> | <a href="https://arxiv.org/abs/2508.06763">Paper</a> | <a href="https://huggingface.co/zihaosheng">Hugging Face</a>  </h3>
+    <h3 align="center"><a href="https://zihaosheng.github.io/SafePLUG/">Website</a> | <a href="https://arxiv.org/abs/2508.06763">Paper</a> | <a href="https://huggingface.co/zihaosheng">HuggingFace</a>  </h3>
   </strong>
 </p>
 </div>
