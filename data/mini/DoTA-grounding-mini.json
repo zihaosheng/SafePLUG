@@ -1,0 +1,86 @@
+[
+    {
+        "id": "dota-0RJPQ_97dcs_000307-0",
+        "image": "DoTA/frames/0RJPQ_97dcs_000307/images/000023.jpg",
+        "mask": {
+          "size": [
+            720,
+            1280
+          ],
+          "counts": "gWc>2Xf0=E5M3N2O0O1O2O0O10001N1O1O1O2O001N101N1O100O100000000O1O100O10000O100O10000O10000O10000O100O101O0O2O1O001N1O2O0O2O000O10001N1000O10O100000O10O10O1O100N2O10O0100O100O01000O1000O10O1000000000O10000000O10000000000000O010000000000000000000000000000000000000001O0000000000001O000000001O0000010O0010O01O0010O01O0000001O00001O0O2O00001O0O2O0O2O0O2M4K6QOfZO8gSg9"
+        },
+        "conversations": [
+          {
+            "from": "human",
+            "value": "<image>\nSegment the part of the image that is being described as 'a black sedan vehicle moving from left to right, featuring alloy wheels and a streamlined design, with no visible damage.'."
+          },
+          {
+            "from": "gpt",
+            "value": "<SEG><mask>DoTA/frames/0RJPQ_97dcs_000307/images/000023.jpg</mask>"
+          }
+        ]
+      },
+      {
+        "id": "dota-0RJPQ_97dcs_000387-0",
+        "image": "DoTA/frames/0RJPQ_97dcs_000387/images/000041.jpg",
+        "mask": {
+          "size": [
+            720,
+            1280
+          ],
+          "counts": "[RZ>6c0<ad0GQ[Oh0ld0XOS[Oj0ld0>N101O001O002N2M4M4K2N2N2N2N1O1O100O001O1O1O01000O10O10O01000000000000O10000O1000000O100O10000O100000000000000000001O0000000000000000000001O01O00000000000000010O000000010O000100O10O10O1000000001O000O1O2N1O1O1O1O1N3N2N0O3L3M2N3L4I7I8J8YORkT;"
+        },
+        "conversations": [
+          {
+            "from": "human",
+            "value": "<image>\nFind the object described as 'the rear view of a white sedan driving on a road, with red taillights and a visible license plate. there is no apparent damage.', and generate its segmentation."
+          },
+          {
+            "from": "gpt",
+            "value": "<SEG><mask>DoTA/frames/0RJPQ_97dcs_000387/images/000041.jpg</mask>"
+          }
+        ]
+      },
+      {
+        "id": "dota-0RJPQ_97dcs_000897-137",
+        "image": "DoTA/frames/0RJPQ_97dcs_000897/images/000155.jpg",
+        "mask": {
+          "size": [
+            720,
+            1280
+          ],
+          "counts": "QXSd0R1Re0`0E;F8D<G9J5M3M2O2N2N2N1O2O0O1O2O0O101N100O1O100O1O100O10000O1O100O100O010O100O100N2L4M201N200O1O1O100O100O100O100O100O100O10000O100000000O10000O100O1O100O1O100O100O1O1O100O010O1O1O1O1O100O1O100O1O1O1O1O100O1O001O100O100O100O1O1O100O1O100O010O1O100O1O100O1O100O1O100O100O10000O10000O10000O0100000O1000000O10000O10000000000O1000000O1000O01000000O10000000000O100000000O10000000000000000O1000000O100000000000000O1000O100000O1000000O100000001O0O10000000000000000O1000000000000O10000000000O10000000000000000O10000000000000000O1000000000000000000O1000000000001O0O1000000000000000000O100000000000000000000O1000001O00O10000001O00001O000O10001O000000000000001O000000000000000O1000001O0000000000000000O1000000O1000001O01O1O01O001O3L2O5J1000iA"
+        },
+        "conversations": [
+          {
+            "from": "human",
+            "value": "<image>\nCan you find and segment the object that is referred to as 'a black vehicle captured at night, possibly a taxi, with chinese characters visible on its side. it appears to be in motion on a road, and part of its side is illuminated by nearby lighting. there is no visible damage, and the vehicle is facing towards the left of the frame.'?"
+          },
+          {
+            "from": "gpt",
+            "value": "<SEG><mask>DoTA/frames/0RJPQ_97dcs_000897/images/000155.jpg</mask>"
+          }
+        ]
+      },
+      {
+        "id": "dota-0RJPQ_97dcs_001437-0",
+        "image": "DoTA/frames/0RJPQ_97dcs_001437/images/000037.jpg",
+        "mask": {
+          "size": [
+            720,
+            1280
+          ],
+          "counts": "_[X?c0he0=D7J5L3L5L9Hd0\\O3N00001O0000O2N1L5H9I6011N2O0O00O11O00QOi[OEVd06Q\\OIoc03W\\OIkc03Z\\OKgc01^\\OLcc00b\\ON`c0Me\\O2od0LYoR<"
+        },
+        "conversations": [
+          {
+            "from": "human",
+            "value": "<image>\nSegment the region corresponding to the description 'a pedestrian wearing dark clothing, with their movement causing a slight blur, and they are walking on a sandy surface under dim lighting.'."
+          },
+          {
+            "from": "gpt",
+            "value": "<SEG><mask>DoTA/frames/0RJPQ_97dcs_001437/images/000037.jpg</mask>"
+          }
+        ]
+      }
+]
