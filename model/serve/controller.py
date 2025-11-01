@@ -11,6 +11,7 @@ import logging
 import time
 from typing import List, Union
 import threading
+import os
 
 from fastapi import FastAPI, Request
 from fastapi.responses import StreamingResponse
@@ -22,7 +23,9 @@ from model.safeplug.constants import CONTROLLER_HEART_BEAT_EXPIRATION
 from model.safeplug.utils import build_logger, server_error_msg
 
 
-logger = build_logger("controller", "./serve_logs/controller.log")
+log_dir = "./serve_logs"
+os.makedirs(log_dir, exist_ok=True)
+logger = build_logger("controller", os.path.join(log_dir, "controller.log"))
 
 
 class DispatchMethod(Enum):

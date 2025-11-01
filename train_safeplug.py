@@ -54,7 +54,7 @@ local_rank = None
 
 
 def parse_args(args):
-    parser = argparse.ArgumentParser(description="SafetyGPT Model Training")
+    parser = argparse.ArgumentParser(description="SafePLUG Model Training")
     parser.add_argument("--local_rank", default=0, type=int, help="node rank")
     # ----------------- Model setting
     parser.add_argument("--version", default="/data/huggingface-models/llava-v1.5-7b")

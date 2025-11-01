@@ -25,12 +25,12 @@ from functools import partial
 import cv2
 import torch.nn.functional as F
 
-from model.safetygpt.constants import WORKER_HEART_BEAT_INTERVAL
-from model.safetygpt.utils import (build_logger, server_error_msg,
+from model.safeplug.constants import WORKER_HEART_BEAT_INTERVAL
+from model.safeplug.utils import (build_logger, server_error_msg,
     pretty_print_semaphore)
-from model.safetygpt.model.builder import load_pretrained_model
-from model.safetygpt.mm_utils import process_images, load_image_from_base64, tokenizer_image_token, KeywordsStoppingCriteria
-from model.safetygpt.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
+from model.safeplug.model.builder import load_pretrained_model
+from model.safeplug.mm_utils import process_images, load_image_from_base64, tokenizer_image_token, KeywordsStoppingCriteria
+from model.safeplug.constants import IMAGE_TOKEN_INDEX, DEFAULT_IMAGE_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 from utils.utils import REGION_TOKEN_INDEX, DEFAULT_REGION_REFER_TOKEN_0, DEFAULT_REGION_REFER_TOKEN_1
 from datasets.LazySupervisedDataset import expand2square
 
@@ -110,7 +110,7 @@ class ModelWorker:
         print("==========> 模型加载完成")
             
         
-        self.is_multimodal = 'llava' in self.model_name.lower() or 'safetygpt' in self.model_name.lower()
+        self.is_multimodal = 'llava' in self.model_name.lower() or 'safeplug' in self.model_name.lower()
 
         if not no_register:
             self.register_to_controller()
@@ -291,7 +291,7 @@ class ModelWorker:
             valid_region_masks_bool.append([torch.ones(1).bool()])
             logger.info("Add region_masks to image_args.")
             # for debug
-            # cv2.imwrite('/home/sky-lab/SHENG_code/SafetyGPT/tmp/serve_resize_region.png', region_masks[0]*255)
+            # cv2.imwrite('/home/sky-lab/SHENG_code/SafePLUG/tmp/serve_resize_region.png', region_masks[0]*255)
         else:
             logger.info("No region_masks for this sample.")
             region_masks = None
@@ -627,9 +627,9 @@ if __name__ == "__main__":
         default="http://localhost:21001")
     parser.add_argument("--model-path", type=str, default="facebook/opt-350m")
     parser.add_argument("--model-base", type=str, default=None)
-    parser.add_argument("--model-name", type=str, default='safetygpt')
+    parser.add_argument("--model-name", type=str, default='safeplug')
     parser.add_argument("--vision_pretrained", type=str, default='../huggingface_models/sam-med2d_b.pth')
-    parser.add_argument("--multi-modal", action="store_true", help="Multimodal mode is automatically detected with model name, please make sure `model.safetygpt` is included in the model path.")
+    parser.add_argument("--multi-modal", action="store_true", help="Multimodal mode is automatically detected with model name, please make sure `model.safeplug` is included in the model path.")
     parser.add_argument("--keep-aspect-ratio", action="store_true")
     parser.add_argument("--num-gpus", type=int, default=1)
     parser.add_argument("--limit-model-concurrency", type=int, default=5)

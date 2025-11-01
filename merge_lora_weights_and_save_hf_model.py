@@ -12,7 +12,7 @@ from peft import LoraConfig, get_peft_model
 from transformers import AutoTokenizer
 
 from model.LISA import LISAForCausalLM
-from model.SafetyGPT import SafetyGPTForCausalLM
+from model.SafePLUG import SafePLUGForCausalLM
 from utils.utils import DEFAULT_IM_END_TOKEN, DEFAULT_IM_START_TOKEN, ADD_OTHERS_TOKENS
 
 
@@ -105,7 +105,7 @@ def main(args):
         torch_dtype = torch.bfloat16
     elif args.precision == "fp16":
         torch_dtype = torch.half
-    model = SafetyGPTForCausalLM.from_pretrained(
+    model = SafePLUGForCausalLM.from_pretrained(
         args.version, torch_dtype=torch_dtype, low_cpu_mem_usage=True, **model_args
     )
     model.config.eos_token_id = tokenizer.eos_token_id

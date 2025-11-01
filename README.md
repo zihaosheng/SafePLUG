@@ -78,7 +78,12 @@ python -m model.serve.gradio_web_server --controller http://localhost:64000 --mo
 ```
 3. launch the model worker
 ```shell
-torchrun --nproc_per_node=1 -m model.serve.model_worker --host localhost --controller http://localhost:64000 --port 64002 --worker http://localhost:64002 --model-path "/home/sky-lab/SHENG_code/SafePLUG/hf/safeplug-7b-stage2" --add_region_feature --device_map cuda --vision_pretrained /data/huggingface-models/sam_vit_h_4b8939.pth
+torchrun --nproc_per_node=1 -m model.serve.model_worker --host localhost \
+        --controller http://localhost:64000 \
+        --port 64002 --worker http://localhost:64002 \
+        --model-path "/home/sky-lab/SHENG_code/SafePLUG/hf/safeplug-7b-stage2" \
+        --add_region_feature --device_map cuda \
+        --vision_pretrained /data/huggingface-models/sam_vit_h_4b8939.pth
 ```
 Note: You must use torchrun, otherwise loading MPI will cause it to freeze.
 

@@ -128,7 +128,7 @@ def vis_overlay_masks(original_image_path, prediction_mask, ground_truth_mask, s
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Baseline Segmentation Metrics Evaluation.')
-    parser.add_argument('-p', '--pred', default='/home/sky-lab/SHENG_code/SafetyGPT/baseline_eval/Qwen2.5-VL-7B-Instruct/DoTA_grounding_test.jsonl')
+    parser.add_argument('-p', '--pred', default='/home/sky-lab/SHENG_code/SafePLUG/baseline_eval/Qwen2.5-VL-7B-Instruct/DoTA_grounding_test.jsonl')
     parser.add_argument('-m', '--model', default='qwen')
     parser.add_argument('-c', '--ckpt', default='/data/huggingface-models/sam_vit_h_4b8939.pth')
     parser.add_argument('-v', '--vis_mask', action='store_true')
