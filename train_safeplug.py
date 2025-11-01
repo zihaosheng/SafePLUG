@@ -229,7 +229,6 @@ def main(args):
     args = parse_args(args)
     local_rank = args.local_rank
     rank0_print("local rank:", local_rank)
-    args.num_experts = [args.num_experts]
     set_seed(42)
     if args.local_rank == 0:
         test_randomness()
